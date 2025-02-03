@@ -15,22 +15,22 @@ public class TodoService { // controllerdaki apiler işlem yapabilsin diye func 
     @Autowired
     private TodoRepository todoRepository;
 
-    public void deleteTodos(Long Id){
-        todoRepository.deleteById(Id);
+    public void deleteTodos(String id){
+        todoRepository.deleteById(id);
         
     }
-    public List<todo> getAllTaTodos(){
+    public List<todo> getAllTodos(){
         return todoRepository.findAll();
     }
     public todo create( todo todonew){
         return todoRepository.save(todonew);
     }
 
-    public Optional<todo> getById(Long Id){
+    public Optional<todo> getById(String Id){
         return todoRepository.findById(Id);
     }
 
-    public todo update(Long id, todo todonew){
+    public todo update(String id, todo todonew){
         if( todoRepository.existsById(id)){
             todonew.setId(id);
             return todoRepository.save(todonew);
